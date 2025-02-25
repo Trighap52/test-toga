@@ -1,0 +1,41 @@
+name: Generate UML Diagrams
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  generate-diagrams:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y graphviz
+          python -m pip install --upgrade pip
+          pip install pylint
+
+      - name: Run Pyreverse
+        run: |
+          mkdir -p diagrams
+          pyreverse -Smn -o png -p canvas ./core/src/toga/widgets/canvas
+          pyreverse -ASmn -o png -p windows ./winforms/src/toga_winforms/widgets/canvas.py
+          pyreverse -Smn -o png -p examples ./examples/canvas/canvas 
+          mv classes_canvas.png diagrams/
+          mv classes_windows.png diagrams/
+          mv classes_examples.png diagrams/
+
+      - name: Upload UML Diagrams as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: uml-diagrams
+          path: diagrams/*.png
