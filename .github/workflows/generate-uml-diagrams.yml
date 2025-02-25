@@ -29,7 +29,7 @@ jobs:
           mkdir -p diagrams
           pyreverse -Smn -o png -p canvas ./core/src/toga/widgets/canvas
           pyreverse -ASmn -o png -p windows ./winforms/src/toga_winforms/widgets/canvas.py
-          pyreverse -Smn -o png -p examples ./examples/canvas/canvas 
+          pyreverse -Smn -o png -p examples ./examples/canvas/canvas
           mv classes_canvas.png diagrams/
           mv classes_windows.png diagrams/
           mv classes_examples.png diagrams/
@@ -39,3 +39,13 @@ jobs:
         with:
           name: uml-diagrams
           path: diagrams/*.png
+
+      - name: Display UML Diagrams in Summary
+        run: |
+          echo "## UML Diagrams" >> $GITHUB_STEP_SUMMARY
+          echo "### Canvas UML" >> $GITHUB_STEP_SUMMARY
+          echo "![](diagrams/classes_canvas.png)" >> $GITHUB_STEP_SUMMARY
+          echo "### Windows UML" >> $GITHUB_STEP_SUMMARY
+          echo "![](diagrams/classes_windows.png)" >> $GITHUB_STEP_SUMMARY
+          echo "### Examples UML" >> $GITHUB_STEP_SUMMARY
+          echo "![](diagrams/classes_examples.png)" >> $GITHUB_STEP_SUMMARY
