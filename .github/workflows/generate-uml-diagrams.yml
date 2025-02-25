@@ -34,8 +34,20 @@ jobs:
           mv classes_windows.png diagrams/
           mv classes_examples.png diagrams/
 
-      - name: Upload UML Diagrams as Artifact
+      - name: Upload Canvas UML Diagram
         uses: actions/upload-artifact@v4
         with:
-          name: uml-diagrams
-          path: diagrams/*.png
+          name: canvas-uml-diagram
+          path: diagrams/classes_canvas.png
+
+      - name: Upload Windows UML Diagram
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-uml-diagram
+          path: diagrams/classes_windows.png
+
+      - name: Upload Examples UML Diagram
+        uses: actions/upload-artifact@v4
+        with:
+          name: examples-uml-diagram
+          path: diagrams/classes_examples.png
