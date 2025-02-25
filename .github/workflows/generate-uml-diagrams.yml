@@ -44,8 +44,8 @@ jobs:
         run: |
           echo "## UML Diagrams" >> $GITHUB_STEP_SUMMARY
           echo "### Canvas UML" >> $GITHUB_STEP_SUMMARY
-          echo "![](diagrams/classes_canvas.png)" >> $GITHUB_STEP_SUMMARY
+          echo "![Image](diagrams/classes_canvas.png)" >> $GITHUB_STEP_SUMMARY
           echo "### Windows UML" >> $GITHUB_STEP_SUMMARY
-          echo "![](diagrams/classes_windows.png)" >> $GITHUB_STEP_SUMMARY
+          echo "![Image](diagrams/classes_windows.png)" >> $GITHUB_STEP_SUMMARY
           echo "### Examples UML" >> $GITHUB_STEP_SUMMARY
-          echo "![](diagrams/classes_examples.png)" >> $GITHUB_STEP_SUMMARY
+          echo "![Image](diagrams/classes_examples.png)" >> $GITHUB_STEP_SUMMARY
